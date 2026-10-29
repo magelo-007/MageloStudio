@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Application Web</title>
+    <style>
+        /* Le design de l'application (CSS) */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Bienvenue sur mon application !</h1>
+        <p id="message">Cliquez sur le bouton pour tester l'interactivité.</p>
+        <button onclick="changerTexte()">Clique-moi</button>
+    </div>
+
+    <script>
+        // Le code interactif de l'application (JavaScript)
+        function changerTexte() {
+            const message = document.getElementById("message");
+            message.textContent = "Bravo ! Votre application fonctionne sur GitHub ! 🚀";
+        }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magelo Studio | Creator Dashboard</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 242, 254, 0.3); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 242, 254, 0.6); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col md:flex-row overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="w-full md:w-64 glass border-r border-slate-800 flex flex-col justify-between z-30 shrink-0">
+        <div>
+            <!-- Brand Logo Header -->
+            <div class="p-6 border-b border-slate-800/80 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 font-bold text-xl text-white">
+                        M
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg tracking-tight bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Magelo Studio</h1>
+                        <p class="text-xs text-slate-400 font-medium">@magelo-007</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="p-4 space-y-1.5">
+                <button data-action="switch-tab" data-target="tab-dashboard" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition-all text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-sm shadow-cyan-500/5">
+                    <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+                    <span>Dashboard Stats</span>
+                </button>
+                <button data-action="switch-tab" data-target="tab-studio" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-900/60">
+                    <i class="fa-solid fa-wand-magic-sparkles w-5 text-center"></i>
+                    <span>Studio IA</span>
+                </button>
+                <button data-action="switch-tab" data-target="tab-pipeline" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-900/60">
+                    <i class="fa-solid fa-kanban w-5 text-center"></i>
+                    <span>Pipeline Prod</span>
+                </button>
+                <button data-action="switch-tab" data-target="tab-ab" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-900/60">
+                    <i class="fa-solid fa-sliders w-5 text-center"></i>
+                    <span>A/B Tester Shorts</span>
+                </button>
+                <button data-action="switch-tab" data-target="tab-ai" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-900/60">
+                    <i class="fa-solid fa-robot w-5 text-center"></i>
+                    <span>Magelo AI (Coach)</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Sidebar Footer / Quick Actions -->
+        <div class="p-4 border-t border-slate-800/80 space-y-2">
+            <button data-action="open-stats-modal" class="w-full py-2.5 px-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-cyan-500/20 transition-all">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Modifier mes stats</span>
+            </button>
+            <button data-action="reset-database" class="w-full py-2 px-3 bg-slate-900 hover:bg-red-950/40 text-slate-400 hover:text-red-400 border border-slate-800 hover:border-red-900/50 rounded-xl text-xs flex items-center justify-center space-x-2 transition-all">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Réinitialiser</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="flex-1 flex flex-col min-h-screen overflow-y-auto">
+        <!-- Top Bar Header -->
+        <header class="glass sticky top-0 z-20 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <h2 id="current-tab-title" class="text-lg font-bold tracking-tight text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-chart-pie text-cyan-400 mr-2"></i>Dashboard Real-Stats
+                </h2>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-slate-300 font-medium">Studio Synced (LocalStorage)</span>
+                </div>
+                <div class="w-9 h-9 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold">
+                    M
+                </div>
+            </div>
+        </header>
+
+        <!-- VIEW CONTAINER WITH GENEROUS PADDING/MARGINS -->
+        <div class="p-6 md:p-8 max-w-7xl mx-auto w-full flex-1 space-y-6">
+
+            <!-- TAB 1: DASHBOARD REAL-STATS -->
+            <section id="tab-dashboard" class="tab-content space-y-6 pt-2">
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Subs -->
+                    <div class="glass-card p-5 rounded-2xl relative overflow-hidden group hover:border-cyan-500/40 transition-all">
+                        <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl group-hover:bg-cyan-500/20 transition-all"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Abonnés Actuels</span>
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="text-3xl font-extrabold text-white mb-1" id="stat-subs">1,420</div>
+                        <div class="text-xs text-emerald-400 font-medium flex items-center">
+                            <i class="fa-solid fa-arrow-trend-up mr-1"></i> +48 cette semaine
+                        </div>
+                    </div>
+
+                    <!-- Total Views -->
+                    <div class="glass-card p-5 rounded-2xl relative overflow-hidden group hover:border-purple-500/40 transition-all">
+                        <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-purple-500/10 rounded-full blur-xl group-hover:bg-purple-500/20 transition-all"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Vues Totales</span>
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="text-3xl font-extrabold text-white mb-1" id="stat-views">84,590</div>
+                        <div class="text-xs text-emerald-400 font-medium flex items-center">
+                            <i class="fa-solid fa-arrow-trend-up mr-1"></i> +3.2k aujourd'hui
+                        </div>
+                    </div>
+
+                    <!-- CTR Moyen -->
+                    <div class="glass-card p-5 rounded-2xl relative overflow-hidden group hover:border-blue-500/40 transition-all">
+                        <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-blue-500/10 rounded-full blur-xl group-hover:bg-blue-500/20 transition-all"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">CTR Moyen (%)</span>
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <div class="text-3xl font-extrabold text-white mb-1" id="stat-ctr">12.4%</div>
+                        <div class="text-xs text-emerald-400 font-medium flex items-center">
+                            <i class="fa-solid fa-bolt mr-1"></i> Excellent taux
+                        </div>
+                    </div>
+
+                    <!-- Objectif Abonnés -->
+                    <div class="glass-card p-5 rounded-2xl relative overflow-hidden group hover:border-emerald-500/40 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Objectif 2k Subs</span>
+                                <span id="stat-goal-percent" class="text-xs font-bold text-emerald-400">71%</span>
+                            </div>
+                            <div class="w-full bg-slate-900 rounded-full h-2.5 mb-2 overflow-hidden border border-slate-800">
+                                <div id="stat-goal-bar" class="bg-gradient-to-r from-cyan-500 to-emerald-400 h-2.5 rounded-full transition-all duration-500" style="width: 71%"></div>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-400 flex justify-between">
+                            <span>Actuel: <strong id="stat-goal-current" class="text-slate-200">1,420</strong></span>
+                            <span>Cible: <strong class="text-slate-200">2,000</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Videos Section -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-800/80">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-base font-bold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-fire text-orange-500"></i>
+                                <span>Top Shorts & Vidéos Réelles de la Chaîne</span>
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Performances en direct de vos derniers contenus publiés</p>
+                        </div>
+                        <button data-action="open-stats-modal" class="text-xs px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-cyan-400 font-medium transition-all border border-slate-800 flex items-center space-x-1.5">
+                            <i class="fa-solid fa-sliders"></i>
+                            <span>Gérer mes chiffres</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Video Card 1 -->
+                        <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-pink-500/10 text-pink-400 border border-pink-500/20">Shorts</span>
+                                    <span class="text-xs text-slate-400 font-mono">14.2K vues</span>
+                                </div>
+                                <h4 class="font-semibold text-sm text-white mb-2 leading-snug">Cat Dancing ?! 🥺 (Phonk Drop Edit)</h4>
+                                <p class="text-xs text-slate-400 mb-4 line-clamp-2">Le montage CapCut avec le chat qui danse sur un rythme Phonk ultra dynamique.</p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80 text-xs">
+                                <span class="text-slate-400">CTR: <strong class="text-cyan-400">14.8%</strong></span>
+                                <a href="https://youtube.com/@magelo-007" target="_blank" class="text-cyan-400 hover:underline flex items-center space-x-1 font-medium">
+                                    <span>Ouvrir</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Video Card 2 -->
+                        <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">Horreur / Backrooms</span>
+                                    <span class="text-xs text-slate-400 font-mono">9.8K vues</span>
+                                </div>
+                                <h4 class="font-semibold text-sm text-white mb-2 leading-snug">Backrooms Edit 👌 - Niveau Infini</h4>
+                                <p class="text-xs text-slate-400 mb-4 line-clamp-2">Exploration des salles jaunes et escape game tendu avec Évoli Roi.</p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80 text-xs">
+                                <span class="text-slate-400">CTR: <strong class="text-cyan-400">11.2%</strong></span>
+                                <a href="https://youtube.com/@magelo-007" target="_blank" class="text-cyan-400 hover:underline flex items-center space-x-1 font-medium">
+                                    <span>Ouvrir</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Video Card 3 -->
+                        <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Roblox / Gaming</span>
+                                    <span class="text-xs text-slate-400 font-mono">18.5K vues</span>
+                                </div>
+                                <h4 class="font-semibold text-sm text-white mb-2 leading-snug">Speedrun Doors en 10 minutes !</h4>
+                                <p class="text-xs text-slate-400 mb-4 line-clamp-2">Tentative record sur Roblox Doors avec des cuts ultra rapides et effets shake.</p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80 text-xs">
+                                <span class="text-slate-400">CTR: <strong class="text-cyan-400">13.1%</strong></span>
+                                <a href="https://youtube.com/@magelo-007" target="_blank" class="text-cyan-400 hover:underline flex items-center space-x-1 font-medium">
+                                    <span>Ouvrir</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: STUDIO IA TOUT-EN-UN -->
+            <section id="tab-studio" class="tab-content hidden space-y-6 pt-2">
+                <div class="glass-card rounded-2xl p-6 border border-slate-800/80">
+                    <div class="max-w-xl mb-6">
+                        <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i>
+                            <span>Générateur de Concepts & Scripts CapCut</span>
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1">Générez instantanément un package complet pour votre prochaine vidéo YouTube ou Short : titre accrocheur, tags SEO et minutage de montage Phonk / CapCut.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Thématique Principale</label>
+                            <select id="ai-theme" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+                                <option value="roblox">Roblox (Doors / Rivals)</option>
+                                <option value="backrooms">Backrooms & Creepypasta</option>
+                                <option value="multicraft">MultiCraft / Minecraft</option>
+                                <option value="capcut">CapCut Edit & Phonk</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Format de Vidéo</label>
+                            <select id="ai-format" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+                                <option value="short">YouTube Short (9:16 - Phonk Drop)</option>
+                                <option value="long">Vidéo Longue (Gameplay & Fun)</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button data-action="generate-studio-concept" class="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-slate-950 font-bold py-2.5 px-4 rounded-xl text-xs transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Générer le Package</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Generated Result Box -->
+                    <div id="ai-studio-result" class="bg-slate-900/80 rounded-2xl p-6 border border-slate-800 space-y-6">
+                        <div class="text-center py-8 text-slate-500 text-xs">
+                            <i class="fa-solid fa-microchip text-2xl mb-2 text-slate-600 block"></i>
+                            Sélectionnez une thématique et cliquez sur "Générer le Package" pour créer votre concept viral.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: PIPELINE PROD (KANBAN) -->
+            <section id="tab-pipeline" class="tab-content hidden space-y-6 pt-2">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-kanban text-purple-400"></i>
+                            <span>Pipeline de Production YouTube</span>
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Organisez vos tournages, montages CapCut et publications en toute simplicité.</p>
+                    </div>
+                    <button data-action="open-kanban-modal" class="px-4 py-2.5 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold rounded-xl text-xs flex items-center space-x-2 shadow-lg shadow-purple-600/20 transition-all">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Ajouter une vidéo</span>
+                    </button>
+                </div>
+
+                <!-- Kanban Board Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start">
+                    <!-- Column 1: Idees -->
+                    <div class="glass-card rounded-2xl p-4 border border-slate-800/80 flex flex-col min-h-[500px]">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-slate-200">💡 Idées</h4>
+                            </div>
+                            <span id="count-idees" class="px-2 py-0.5 rounded-full bg-slate-900 text-slate-400 text-[10px] font-bold">0</span>
+                        </div>
+                        <div id="kanban-col-idees" class="flex-1 space-y-3 overflow-y-auto max-h-[600px] pr-1"></div>
+                    </div>
+
+                    <!-- Column 2: Tournage -->
+                    <div class="glass-card rounded-2xl p-4 border border-slate-800/80 flex flex-col min-h-[500px]">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-slate-200">🎬 Tournage</h4>
+                            </div>
+                            <span id="count-tournage" class="px-2 py-0.5 rounded-full bg-slate-900 text-slate-400 text-[10px] font-bold">0</span>
+                        </div>
+                        <div id="kanban-col-tournage" class="flex-1 space-y-3 overflow-y-auto max-h-[600px] pr-1"></div>
+                    </div>
+
+                    <!-- Column 3: Montage CapCut -->
+                    <div class="glass-card rounded-2xl p-4 border border-slate-800/80 flex flex-col min-h-[500px]">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-slate-200">✂️ Montage CapCut</h4>
+                            </div>
+                            <span id="count-montage" class="px-2 py-0.5 rounded-full bg-slate-900 text-slate-400 text-[10px] font-bold">0</span>
+                        </div>
+                        <div id="kanban-col-montage" class="flex-1 space-y-3 overflow-y-auto max-h-[600px] pr-1"></div>
+                    </div>
+
+                    <!-- Column 4: Publie -->
+                    <div class="glass-card rounded-2xl p-4 border border-slate-800/80 flex flex-col min-h-[500px]">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-slate-200">🚀 Publié</h4>
+                            </div>
+                            <span id="count-publie" class="px-2 py-0.5 rounded-full bg-slate-900 text-slate-400 text-[10px] font-bold">0</span>
+                        </div>
+                        <div id="kanban-col-publie" class="flex-1 space-y-3 overflow-y-auto max-h-[600px] pr-1"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: A/B TESTER SHORTS -->
+            <section id="tab-ab" class="tab-content hidden space-y-6 pt-2">
+                <div class="glass-card rounded-2xl p-6 border border-slate-800/80">
+                    <div class="max-w-xl mb-6">
+                        <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-sliders text-cyan-400"></i>
+                            <span>A/B Tester YouTube Shorts (Simulation 9:16)</span>
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1">Comparez le rendu en direct de deux titres, styles de miniatures ou accroches pour maximiser le taux de clics (CTR) et la rétention.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <!-- Controls Form -->
+                        <div class="space-y-4">
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-3">
+                                <h4 class="font-bold text-xs uppercase text-cyan-400 tracking-wider">Option A (Variante Principale)</h4>
+                                <div>
+                                    <label class="block text-[11px] font-medium text-slate-300 mb-1">Titre du Short</label>
+                                    <input type="text" id="ab-title-a" value="Cat Dancing ?! 🥺 (Phonk Drop)" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[11px] font-medium text-slate-300 mb-1">Badge / Style</label>
+                                    <input type="text" id="ab-badge-a" value="🔥 Tendance #1" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-3">
+                                <h4 class="font-bold text-xs uppercase text-purple-400 tracking-wider">Option B (Variante Test)</h4>
+                                <div>
+                                    <label class="block text-[11px] font-medium text-slate-300 mb-1">Titre du Short</label>
+                                    <input type="text" id="ab-title-b" value="J'ai testé le chat qui danse en Phonk !" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[11px] font-medium text-slate-300 mb-1">Badge / Style</label>
+                                    <input type="text" id="ab-badge-b" value="⚡ INSANE EDIT" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500">
+                                </div>
+                            </div>
+
+                            <button data-action="run-ab-test" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-slate-950 font-bold rounded-xl text-xs transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-play"></i>
+                               <span>Lancer la Simulation & Prédire le CTR</span>
+                            </button>
+                        </div>
+
+                        <!-- Phone Simulation Preview (9:16) -->
+                        <div class="flex justify-center">
+                            <div class="w-[280px] h-[520px] bg-slate-950 rounded-[36px] border-4 border-slate-800 p-3 shadow-2xl relative flex flex-col justify-between overflow-hidden">
+                                <div class="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-900 rounded-full z-10"></div>
+                                <div class="w-full h-full rounded-[24px] bg-gradient-to-b from-purple-950/60 via-slate-900 to-slate-950 p-4 flex flex-col justify-between relative overflow-hidden border border-slate-800/80 mt-2">
+                                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,242,254,0.15),transparent_70%)]"></div>
+                                    <div class="relative z-10 flex justify-between items-center text-[10px] text-slate-300 font-mono">
+                                        <span id="preview-badge" class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 font-bold">🔥 Tendance #1</span>
+                                        <span>9:16 YouTube Shorts</span>
+                                    </div>
+                                    <div class="relative z-10 text-center my-auto space-y-2">
+                                        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-cyan-500 to-purple-600 mx-auto flex items-center justify-center text-2xl shadow-lg shadow-cyan-500/30 animate-bounce">
+                                            🐱
+                                        </div>
+                                        <p class="text-[11px] text-slate-400">CapCut Phonk Drop Edit</p>
+                                    </div>
+                                    <div class="relative z-10 space-y-3">
+                                        <h5 id="preview-title" class="font-bold text-xs text-white leading-snug">Cat Dancing ?! 🥺 (Phonk Drop)</h5>
+                                        <div id="ab-prediction-box" class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-center">
+                                            <span class="text-[10px] text-slate-400 block">CTR Estimé par l'IA :</span>
+                                            <span class="text-sm font-extrabold text-cyan-400">14.6% (Fort Potentiel Viral)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: MAGELO AI (COACH) -->
+            <section id="tab-ai" class="tab-content hidden space-y-6 pt-2">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start h-[680px]">
+                    <!-- Sidebar Conversations List -->
+                    <div class="glass-card rounded-2xl p-4 border border-slate-800/80 flex flex-col h-full">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                            <h4 class="font-bold text-xs uppercase tracking-wider text-slate-200">Conversations</h4>
+                            <button data-action="new-chat" class="w-7 h-7 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 flex items-center justify-center transition-all border border-cyan-500/20" title="Nouveau Tchat">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                        <div id="conversations-list" class="flex-1 space-y-1.5 overflow-y-auto pr-1"></div>
+                    </div>
+
+                    <!-- Chat Box Main Area -->
+                    <div class="glass-card rounded-2xl border border-slate-800/80 flex flex-col h-full lg:col-span-3 overflow-hidden">
+                        <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/40">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <div>
+                                    <h4 id="active-chat-title" class="font-bold text-sm text-white">Coaching YouTube & CapCut</h4>
+                                    <p class="text-[10px] text-slate-400">Propulsé pour Magelo (@magelo-007)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button data-action="rename-chat" class="px-2.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 rounded-lg text-xs border border-slate-800 transition-all flex items-center space-x-1" title="Renommer">
+                                    <i class="fa-solid fa-pen text-[10px]"></i>
+                                    <span class="hidden sm:inline">Renommer</span>
+                                </button>
+                                <button data-action="delete-chat" class="px-2.5 py-1.5 bg-slate-900 hover:bg-red-950/40 text-slate-400 hover:text-red-400 rounded-lg text-xs border border-slate-800 hover:border-red-900/50 transition-all flex items-center space-x-1" title="Supprimer">
+                                    <i class="fa-solid fa-trash text-[10px]"></i>
+                                    <span class="hidden sm:inline">Supprimer</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4"></div>
+
+                        <div class="p-4 border-t border-slate-800 bg-slate-900/60">
+                            <form id="chat-form" class="flex items-center space-x-2">
+                                <input type="text" id="chat-input" placeholder="Posez une question sur l'algorithme, les miniatures ou le montage CapCut..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-cyan-500">
+                                <button type="submit" class="px-5 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-slate-950 font-bold rounded-xl text-xs transition-all shadow-lg shadow-cyan-500/20 flex items-center space-x-2 shrink-0">
+                                    <span>Envoyer</span>
+                                    <i class="fa-solid fa-paper-plane text-[10px]"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- MODAL: STATS EDITOR -->
+    <div id="modal-stats" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass max-w-md w-full rounded-2xl p-6 border border-slate-800 space-y-5 shadow-2xl">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                <h3 class="font-bold text-base text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-pen-to-square text-cyan-400"></i>
+                    <span>Mettre à jour vos statistiques</span>
+                </h3>
+                <button data-action="close-modal" data-modal="modal-stats" class="w-8 h-8 rounded-lg bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="form-edit-stats" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nombre d'Abonnés</label>
+                    <input type="number" id="input-subs" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Vues Totales</label>
+                    <input type="number" id="input-views" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">CTR Moyen (%)</label>
+                    <input type="text" id="input-ctr" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500" required>
+                </div>
+                <div class="pt-3 flex space-x-3">
+                    <button type="button" data-action="close-modal" data-modal="modal-stats" class="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold rounded-xl text-xs border border-slate-800 transition-all">Annuler</button>
+                    <button type="submit" class="flex-1 py-2.5 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-slate-950 font-bold rounded-xl text-xs transition-all shadow-lg shadow-cyan-500/20">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: KANBAN CARD ADD / EDIT -->
+    <div id="modal-kanban" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass max-w-md w-full rounded-2xl p-6 border border-slate-800 space-y-5 shadow-2xl">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                <h3 id="kanban-modal-title" class="font-bold text-base text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-plus text-purple-400"></i>
+                    <span>Ajouter une carte vidéo</span>
+                </h3>
+                <button data-action="close-modal" data-modal="modal-kanban" class="w-8 h-8 rounded-lg bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center border border-slate-800">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="form-kanban-card" class="space-y-4">
+                <input type="hidden" id="kanban-card-id" value="">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Titre de la vidéo</label>
+                    <input type="text" id="kanban-title" placeholder="Ex: Speedrun Doors en 10 minutes..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" required>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Catégorie</label>
+                        <select id="kanban-category" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                            <option value="Roblox">Roblox</option>
+                            <option value="Horreur">Horreur / Backrooms</option>
+                            <option value="Shorts">YouTube Shorts</option>
+                            <option value="CapCut">CapCut Edit</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Colonne Pipeline</label>
+                        <select id="kanban-column" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                            <option value="idees">💡 Idées</option>
+                            <option value="tournage">🎬 Tournage</option>
+                            <option value="montage">✂️ Montage CapCut</option>
+                            <option value="publie">🚀 Publié</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Note / Lien YouTube (Optionnel)</label>
+                    <input type="text" id="kanban-notes" placeholder="Ex: Ajouter effet Phonk Drop au montage..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                </div>
+                <div class="pt-3 flex space-x-3">
+                    <button type="button" data-action="close-modal" data-modal="modal-kanban" class="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold rounded-xl text-xs border border-slate-800 transition-all">Annuler</button>
+                    <button type="submit" class="flex-1 py-2.5 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold rounded-xl text-xs transition-all shadow-lg shadow-purple-600/20">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION CORE -->
+    <script>
+        const DEFAULT_DB = {
+            stats: { subs: 1420, views: 84590, ctr: "12.4%", goal: 2000 },
+            kanban: [
+                { id: "k1", title: "Speedrun Doors en 10 minutes !", category: "Roblox", column: "publie", notes: "Publié avec succès !" },
+                { id: "k2", title: "Backrooms Edit 👌 - Niveau Infini", category: "Horreur", column: "publie", notes: "Très bon taux de clics" },
+                { id: "k3", title: "Cat Dancing ?! 🥺 (Phonk Drop)", category: "Shorts", column: "publie", notes: "Short viral" },
+                { id: "k4", title: "Escape Room Roblox avec Évoli Roi", category: "Roblox", column: "montage", notes: "Ajouter transition shake CapCut" },
+                { id: "k5", title: "MultiCraft : Construire la map ultime", category: "CapCut", column: "tournage", notes: "Caméra fixée sur le bureau" },
+                { id: "k6", title: "Top 3 des creepypastas effrayantes", category: "Horreur", column: "idees", notes: "Rechercher des histoires sombres" }
+            ],
+            conversations: [
+                {
+                    id: "conv-1",
+                    title: "Stratégie abonnés & CTR",
+                    messages: [
+                        { sender: "ai", text: "Salut Magelo ! Prêt à booster tes stats sur ta chaîne @magelo-007 ? Comment puis-je t'aider aujourd'hui ?" },
+                        { sender: "user", text: "Comment augmenter mon CTR sur mes Shorts ?" },
+                        { sender: "ai", text: "Pour booster ton CTR sur les Shorts, mise sur une miniature percutante avec un contraste élevé (texte jaune vif sur fond sombre), un titre accrocheur avec un emoji expressif (comme 🥺 ou 👌), et un rythme ultra rapide dès les 3 premières secondes !" }
+                    ]
+                },
+                {
+                    id: "conv-2",
+                    title: "Idées de montage CapCut Phonk",
+                    messages: [
+                        { sender: "ai", text: "Yo Magelo ! Parlons montage CapCut et Phonk. Quel genre d'edit tu prépares ?" },
+                        { sender: "user", text: "Un edit Roblox avec un gros drop Phonk." },
+                        { sender: "ai", text: "Excellente idée ! Aligne tes cuts sur les basses du morceau Drift Phonk, ajoute un effet 'Shake' puissant exactement au moment du drop, et place un zoom rapide sur l'action clé pour capter l'attention à 100%." }
+                    ]
+                }
+            ],
+            activeConversationId: "conv-1"
+        };
+
+        let db = loadDatabase();
+
+        function loadDatabase() {
+            const stored = localStorage.getItem('magelo_studio_db');
+            if (!stored) {
+                saveDatabase(DEFAULT_DB);
+                return JSON.parse(JSON.stringify(DEFAULT_DB));
+            }
+            try { return JSON.parse(stored); } catch (e) { return JSON.parse(JSON.stringify(DEFAULT_DB)); }
+        }
+
+        function saveDatabase(data) {
+            localStorage.setItem('magelo_studio_db', JSON.stringify(data));
+        }
+
+        function renderAll() {
+            renderStats();
+            renderKanban();
+            renderConversationsList();
+            renderActiveChat();
+        }
+
+        function renderStats() {
+            document.getElementById('stat-subs').textContent = Number(db.stats.subs).toLocaleString();
+            document.getElementById('stat-views').textContent = Number(db.stats.views).toLocaleString();
+            document.getElementById('stat-ctr').textContent = db.stats.ctr;
+
+            const current = Number(db.stats.subs);
+            const goal = Number(db.stats.goal);
+            const percent = Math.min(Math.round((current / goal) * 100), 100);
+
+            document.getElementById('stat-goal-percent').textContent = percent + '%';
+            document.getElementById('stat-goal-bar').style.width = percent + '%';
+            document.getElementById('stat-goal-current').textContent = current.toLocaleString();
+
+            document.getElementById('input-subs').value = db.stats.subs;
+            document.getElementById('input-views').value = db.stats.views;
+            document.getElementById('input-ctr').value = db.stats.ctr;
+        }
+
+        function renderKanban() {
+            const cols = ['idees', 'tournage', 'montage', 'publie'];
+            const counts = { idees: 0, tournage: 0, montage: 0, publie: 0 };
+
+            cols.forEach(col => { document.getElementById(`kanban-col-${col}`).innerHTML = ''; });
+
+            db.kanban.forEach(card => {
+                counts[card.column]++;
+                const container = document.getElementById(`kanban-col-${card.column}`);
+                if (!container) return;
+
+                const badgeColor = card.category === 'Roblox' ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20' :
+                                   card.category === 'Horreur' ? 'bg-purple-500/10 text-purple-400 border-purple-500/20' :
+                                   card.category === 'Shorts' ? 'bg-pink-500/10 text-pink-400 border-pink-500/20' :
+                                   'bg-blue-500/10 text-blue-400 border-blue-500/20';
+
+                const cardEl = document.createElement('div');
+                cardEl.className = 'bg-slate-900/80 rounded-xl p-3.5 border border-slate-800 space-y-2.5 hover:border-slate-700 transition-all group';
+                cardEl.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${badgeColor}">${card.category}</span>
+                        <div class="flex items-center space-x-1 opacity-80 group-hover:opacity-100">
+                            <button data-action="edit-kanban" data-id="${card.id}" class="w-6 h-6 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center text-[10px]" title="Modifier"><i class="fa-solid fa-pen"></i></button>
+                            <button data-action="delete-kanban" data-id="${card.id}" class="w-6 h-6 rounded bg-slate-800 hover:bg-red-950/60 text-slate-400 hover:text-red-400 flex items-center justify-center text-[10px]" title="Supprimer"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <h5 class="font-semibold text-xs text-white leading-snug">${escapeHtml(card.title)}</h5>
+                    ${card.notes ? `<p class="text-[11px] text-slate-400 italic bg-slate-950/40 p-2 rounded border border-slate-800/60">${escapeHtml(card.notes)}</p>` : ''}
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
+                        <button data-action="move-kanban-left" data-id="${card.id}" class="text-[10px] text-slate-400 hover:text-cyan-400 font-medium flex items-center space-x-1"><i class="fa-solid fa-arrow-left"></i><span>Reculer</span></button>
+                        <button data-action="move-kanban-right" data-id="${card.id}" class="text-[10px] text-slate-400 hover:text-cyan-400 font-medium flex items-center space-x-1"><span>Avancer</span><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                `;
+                container.appendChild(cardEl);
+            });
+
+            cols.forEach(col => {
+                const countBadge = document.getElementById(`count-${col}`);
+                if (countBadge) countBadge.textContent = counts[col];
+            });
+        }
+
+        function renderConversationsList() {
+            const listEl = document.getElementById('conversations-list');
+            if (!listEl) return;
+            listEl.innerHTML = '';
+
+            db.conversations.forEach(conv => {
+                const isActive = conv.id === db.activeConversationId;
+                const btn = document.createElement('button');
+                btn.dataset.action = 'select-chat';
+                btn.dataset.id = conv.id;
+                btn.className = `w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition-all flex items-center justify-between group ${isActive ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`;
+                btn.innerHTML = `<span class="truncate pr-2">${escapeHtml(conv.title)}</span><i class="fa-solid fa-chevron-right text-[10px] opacity-0 group-hover:opacity-100"></i>`;
+                listEl.appendChild(btn);
+            });
+        }
+
+        function renderActiveChat() {
+            const activeConv = db.conversations.find(c => c.id === db.activeConversationId) || db.conversations[0];
+            if (!activeConv) return;
+
+            document.getElementById('active-chat-title').textContent = activeConv.title;
+            const messagesEl = document.getElementById('chat-messages');
+            messagesEl.innerHTML = '';
+
+            activeConv.messages.forEach(msg => {
+                const isAi = msg.sender === 'ai';
+                const wrapper = document.createElement('div');
+                wrapper.className = `flex ${isAi ? 'justify-start' : 'justify-end'}`;
+                wrapper.innerHTML = `<div class="max-w-[80%] sm:max-w-[70%] rounded-2xl p-4 text-xs leading-relaxed ${isAi ? 'bg-slate-900/90 border border-slate-800 text-slate-200' : 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-medium shadow-md shadow-cyan-500/10'}">${escapeHtml(msg.text)}</div>`;
+                messagesEl.appendChild(wrapper);
+            });
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAll();
+
+            document.addEventListener('click', (e) => {
+                const target = e.target.closest('[data-action]');
+                if (!target) return;
+
+                const action = target.dataset.action;
+                const id = target.dataset.id;
+
+                switch (action) {
+                    case 'switch-tab':
+                        const targetTab = target.dataset.target;
+                        document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
+                        document.getElementById(targetTab).classList.remove('hidden');
+
+                        document.querySelectorAll('.nav-btn').forEach(btn => {
+                            btn.classList.remove('text-cyan-400', 'bg-cyan-500/10', 'border', 'border-cyan-500/20', 'shadow-sm', 'shadow-cyan-500/5');
+                            btn.classList.add('text-slate-400');
+                        });
+                        target.classList.remove('text-slate-400');
+                        target.classList.add('text-cyan-400', 'bg-cyan-500/10', 'border', 'border-cyan-500/20', 'shadow-sm', 'shadow-cyan-500/5');
+
+                        const titleText = target.querySelector('span').textContent;
+                        const iconHtml = target.querySelector('i').outerHTML;
+                        document.getElementById('current-tab-title').innerHTML = `${iconHtml} <span class="ml-2">${titleText}</span>`;
+                        break;
+                    case 'open-stats-modal':
+                        document.getElementById('modal-stats').classList.remove('hidden');
+                        break;
+                    case 'close-modal':
+                        const modalId = target.dataset.modal;
+                        if (modalId) document.getElementById(modalId).classList.add('hidden');
+                        break;
+                    case 'reset-database':
+                        if (confirm("Voulez-vous vraiment réinitialiser toutes les données aux valeurs par défaut ?")) {
+                            localStorage.removeItem('magelo_studio_db');
+                            db = loadDatabase();
+                            renderAll();
+                            alert("Réinitialisation effectuée avec succès !");
+                        }
+                        break;
+                    case 'open-kanban-modal':
+                        document.getElementById('kanban-modal-title').innerHTML = '<i class="fa-solid fa-plus text-purple-400 mr-2"></i>Ajouter une carte vidéo';
+                        document.getElementById('kanban-card-id').value = '';
+                        document.getElementById('form-kanban-card').reset();
+                        document.getElementById('modal-kanban').classList.remove('hidden');
+                        break;
+                    case 'edit-kanban':
+                        const cardToEdit = db.kanban.find(c => c.id === id);
+                        if (cardToEdit) {
+                            document.getElementById('kanban-modal-title').innerHTML = '<i class="fa-solid fa-pen text-purple-400 mr-2"></i>Modifier la carte vidéo';
+                            document.getElementById('kanban-card-id').value = cardToEdit.id;
+                            document.getElementById('kanban-title').value = cardToEdit.title;
+                            document.getElementById('kanban-category').value = cardToEdit.category;
+                            document.getElementById('kanban-column').value = cardToEdit.column;
+                            document.getElementById('kanban-notes').value = cardToEdit.notes || '';
+                            document.getElementById('modal-kanban').classList.remove('hidden');
+                        }
+                        break;
+                    case 'delete-kanban':
+                        if (confirm("Supprimer cette carte du pipeline de production ?")) {
+                            db.kanban = db.kanban.filter(c => c.id !== id);
+                            saveDatabase(db);
+                            renderKanban();
+                        }
+                        break;
+                    case 'move-kanban-left':
+                        shiftKanbanColumn(id, -1);
+                        break;
+                    case 'move-kanban-right':
+                        shiftKanbanColumn(id, 1);
+                        break;
+                    case 'generate-studio-concept':
+                        generateAiStudioConcept();
+                        break;
+                    case 'run-ab-test':
+                        runAbTestSimulation();
+                        break;
+                    case 'select-chat':
+                        db.activeConversationId = id;
+                        saveDatabase(db);
+                        renderConversationsList();
+                        renderActiveChat();
+                        break;
+                    case 'new-chat':
+                        const newId = 'conv-' + Date.now();
+                        const newConv = {
+                            id: newId,
+                            title: 'Nouvelle discussion',
+                            messages: [{ sender: 'ai', text: 'Salut Magelo ! Comment puis-je t\'aider à faire progresser ton contenu gaming ou tes edits CapCut aujourd\'hui ?' }]
+                        };
+                        db.conversations.push(newConv);
+                        db.activeConversationId = newId;
+                        saveDatabase(db);
+                        renderConversationsList();
+                        renderActiveChat();
+                        break;
+                    case 'rename-chat':
+                        const activeC = db.conversations.find(c => c.id === db.activeConversationId);
+                        if (activeC) {
+                            const newTitle = prompt("Nouveau nom pour cette conversation :", activeC.title);
+                            if (newTitle && newTitle.trim() !== '') {
+                                activeC.title = newTitle.trim();
+                                saveDatabase(db);
+                                renderConversationsList();
+                                renderActiveChat();
+                            }
+                        }
+                        break;
+                    case 'delete-chat':
+                        if (db.conversations.length <= 1) {
+                            alert("Vous devez garder au moins une conversation active !");
+                            return;
+                        }
+                        if (confirm("Voulez-vous supprimer cette conversation ?")) {
+                            db.conversations = db.conversations.filter(c => c.id !== db.activeConversationId);
+                            db.activeConversationId = db.conversations[0].id;
+                            saveDatabase(db);
+                            renderConversationsList();
+                            renderActiveChat();
+                        }
+                        break;
+                }
+            });
+
+            document.getElementById('form-edit-stats').addEventListener('submit', (e) => {
+                e.preventDefault();
+                db.stats.subs = Number(document.getElementById('input-subs').value);
+                db.stats.views = Number(document.getElementById('input-views').value);
+                db.stats.ctr = document.getElementById('input-ctr').value;
+                saveDatabase(db);
+                renderStats();
+                document.getElementById('modal-stats').classList.add('hidden');
+            });
+
+            document.getElementById('form-kanban-card').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const cardId = document.getElementById('kanban-card-id').value;
+                const title = document.getElementById('kanban-title').value;
+                const category = document.getElementById('kanban-category').value;
+                const column = document.getElementById('kanban-column').value;
+                const notes = document.getElementById('kanban-notes').value;
+
+                if (cardId) {
+                    const card = db.kanban.find(c => c.id === cardId);
+                    if (card) { card.title = title; card.category = category; card.column = column; card.notes = notes; }
+                } else {
+                    db.kanban.push({ id: 'k_' + Date.now(), title, category, column, notes });
+                }
+
+                saveDatabase(db);
+                renderKanban();
+                document.getElementById('modal-kanban').classList.add('hidden');
+            });
+
+            document.getElementById('chat-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const inputEl = document.getElementById('chat-input');
+                const text = inputEl.value.trim();
+                if (!text) return;
+
+                const activeConv = db.conversations.find(c => c.id === db.activeConversationId);
+                if (!activeConv) return;
+
+                activeConv.messages.push({ sender: 'user', text });
+                inputEl.value = '';
+                renderActiveChat();
+
+                setTimeout(() => {
+                    let aiReply = "Super idée Magelo ! Pour optimiser ça, assure-toi d'utiliser CapCut pour des transitions fluides et un rythme Phonk bien calé.";
+                    const lower = text.toLowerCase();
+                    if (lower.includes('roblox') || lower.includes('doors') || lower.includes('rivals')) {
+                        aiReply = "Sur Roblox, les joueurs adorent le suspense et l'action non-stop. Pimente ton gameplay avec des cuts rapides et une miniature mettant en avant ton personnage en plein stress !";
+                    } else if (lower.includes('backrooms') || lower.includes('horreur') || lower.includes('creepypasta')) {
+                        aiReply = "Pour les Backrooms et l'horreur, l'ambiance sonore est la clé. Ajoute une réverbe lourde sur ta voix et des effets de glitch pour maximiser la tension.";
+                    } else if (lower.includes('titre') || lower.includes('ctr') || lower.includes('vue')) {
+                        aiReply = "Un bon titre YouTube doit piquer la curiosité sans tout révéler. Utilise des emojis expressifs et pose une question ou un défi direct (ex: 'Speedrun impossible...').";
+                    } else if (lower.includes('multicraft') || lower.includes('minecraft')) {
+                        aiReply = "Sur MultiCraft / Minecraft, montre directement la construction la plus folle dès les 3 premières secondes pour accrocher le spectateur avant le générique.";
+                    }
+
+                    activeConv.messages.push({ sender: 'ai', text: aiReply });
+                    saveDatabase(db);
+                    renderActiveChat();
+                }, 600);
+            });
+        });
+
+        function shiftKanbanColumn(cardId, direction) {
+            const cols = ['idees', 'tournage', 'montage', 'publie'];
+            const card = db.kanban.find(c => c.id === cardId);
+            if (!card) return;
+            const newIndex = cols.indexOf(card.column) + direction;
+            if (newIndex >= 0 && newIndex < cols.length) {
+                card.column = cols[newIndex];
+                saveDatabase(db);
+                renderKanban();
+            }
+        }
+
+        function generateAiStudioConcept() {
+            const theme = document.getElementById('ai-theme').value;
+            const format = document.getElementById('ai-format').value;
+
+            const concepts = {
+                roblox: {
+                    title: "J'ai survécu 24H dans le niveau le plus DANGEREUX de Roblox ! 😱",
+                    tags: ["Roblox", "Doors", "Magelo", "Gaming France", "Survie Roblox"],
+                    script: [
+                        { time: "0:00 - 0:03", action: "Phonk Drop + Zoom rapide sur le visage effrayé du joueur" },
+                        { time: "0:03 - 0:15", action: "Présentation du défi Roblox et apparition d'Évoli Roi en co-op" },
+                        { time: "0:15 - 0:45", action: "Montage ultra dynamique avec cuts et effets shake sur les jumpscares" },
+                        { time: "0:45 - 1:00", action: "Conclusion épique et appel à s'abonner pour atteindre les 2k subs !" }
+                    ]
+                },
+                backrooms: {
+                    title: "J'ai trouvé la sortie secrète des Backrooms... (INTERDIT) 🚪",
+                    tags: ["Backrooms", "Creepypasta", "Magelo", "Horreur", "Escape Game"],
+                    script: [
+                        { time: "0:00 - 0:03", action: "Glitch visuel et cri de surprise avec sonnette d'alarme" },
+                        { time: "0:03 - 0:20", action: "Exploration des couloirs infinis et ambiance sonore étouffée" },
+                        { time: "0:20 - 0:50", action: "Rencontre avec une entité mystérieuse et course-poursuite" },
+                        { time: "0:50 - 1:00", action: "Cliffhanger mystérieux pour booster la rétention" }
+                    ]
+                },
+                multicraft: {
+                    title: "J'ai construit un château géant sur MultiCraft en 1 heure ! 🏰",
+                    tags: ["MultiCraft", "Minecraft", "Build", "Magelo Gaming", "Tutoriel"],
+                    script: [
+                        { time: "0:00 - 0:03", action: "Time-lapse ultra rapide de la construction avec musique Phonk" },
+                        { time: "0:03 - 0:25", action: "Explication des pièges cachés et des blocs secrets" },
+                        { time: "0:25 - 0:50", action: "Visite guidée en mode cinématique avec mouvements de caméra fluides" },
+                        { time: "0:50 - 1:00", action: "Défi lancé aux abonnés dans les commentaires" }
+                    ]
+                },
+                capcut: {
+                    title: "Le tutoriel CapCut ultime pour des edits Phonk INCROYABLES 🔥",
+                    tags: ["CapCut", "Tutoriel Edit", "Phonk Drop", "Magelo Studio", "Montage Vidéo"],
+                    script: [
+                        { time: "0:00 - 0:03", action: "Avant / Après spectaculaire d'un edit sur un rythme lourd" },
+                        { time: "0:03 - 0:20", action: "Tutoriel pas à pas : Synchronisation des clés d'animation et du Shake" },
+                        { time: "0:20 - 0:45", action: "Astuce secrète de colorimétrie et flash blanc sur les temps forts" },
+                        { time: "0:45 - 1:00", action: "Résultat final en plein écran avec appel à liker" }
+                    ]
+                }
+            };
+
+            const data = concepts[theme] || concepts.roblox;
+            document.getElementById('ai-studio-result').innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Concept Généré avec Succès</span>
+                        <span class="text-xs text-slate-400 font-mono">Format : ${format === 'short' ? 'YouTube Short (9:16)' : 'Vidéo Longue'}</span>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Titre Accrocheur Recommandé</span>
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-bold text-white"><span>${escapeHtml(data.title)}</span></div>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Tags SEO Optimisés</span>
+                        <div class="flex flex-wrap gap-1.5">${data.tags.map(t => `<span class="px-2.5 py-1 rounded-lg bg-slate-950 text-cyan-400 text-xs border border-slate-800 font-mono">#${t}</span>`).join('')}</div>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Script & Minutage CapCut (Phonk & Effects)</span>
+                        <div class="space-y-2">${data.script.map(s => `<div class="p-2.5 bg-slate-950 rounded-xl border border-slate-800 flex items-start space-x-3 text-xs"><span class="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 font-mono font-bold shrink-0">${s.time}</span><span class="text-slate-300">${s.action}</span></div>`).join('')}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function runAbTestSimulation() {
+            const titleA = document.getElementById('ab-title-a').value;
+            const badgeA = document.getElementById('ab-badge-a').value;
+            document.getElementById('preview-title').textContent = titleA;
+            document.getElementById('preview-badge').textContent = badgeA;
+
+            const randomCtr = (Math.random() * (16.5 - 11.0) + 11.0).toFixed(1);
+            document.getElementById('ab-prediction-box').innerHTML = `
+                <span class="text-[10px] text-slate-400 block">Simulation Variante A vs B :</span>
+                <span class="text-xs font-bold text-white block mt-0.5">Option A (${badgeA}) gagne avec <strong class="text-cyan-400">${randomCtr}% CTR</strong></span>
+                <span class="text-[9px] text-emerald-400 block mt-1"><i class="fa-solid fa-arrow-trend-up"></i> +24% de rétention estimée sur les 3 premières secondes</span>
+            `;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", '&#039;');
+        }
+    </script>
+</body>
+                                                                    </html>
